@@ -5,13 +5,7 @@ import { faqQuestions } from '../constants';
 
 export default function Home() {
   return (
-    <div className="bg-black w-full overflow-hidden">
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Navbar />
-        </div>
-      </div>
-
+    <div className=" w-full overflow-hidden">
       <div className={`bg--black-gradient-2 ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Hero />
@@ -34,7 +28,6 @@ export default function Home() {
               <Faq key={faq.id} question={faq.question} answer={faq.answer} />
             ))}
           </div>
-          <Footer />
         </div>
       </div>
     </div>

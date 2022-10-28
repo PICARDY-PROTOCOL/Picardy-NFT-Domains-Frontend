@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '../helper/style';
 import { FaDiscord } from 'react-icons/fa';
 import { BsGithub, BsTwitter } from 'react-icons/bs';
@@ -7,20 +8,12 @@ const Footer = () => (
   <section
     className={`${styles.flexCenter} ${styles.paddingY} flex-col mt-24 pt-16 border-t-[1px] border-t-[#3F3E45]`}
   >
-    <ul className="text-white flex justify-between text-lg gap-4">
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">How it Works</a>
-      </li>
-      <li>
-        <a href="#">FAQ</a>
-      </li>
-      <li>
-        <a href="#">Blog</a>
-      </li>
-    </ul>
+    <div className="text-white flex justify-between text-lg gap-4">
+      <Link href="/about">About</Link>
+      <Link href="/">How it Works</Link>
+      <Link href="/">FAQ</Link>
+      <Link href="/">Blog</Link>
+    </div>
 
     <div className="flex flex-row gap-6 text-gray-300 cursor-pointer text-2xl pt-8 md:mt-0 mt-2">
       <FaDiscord />
