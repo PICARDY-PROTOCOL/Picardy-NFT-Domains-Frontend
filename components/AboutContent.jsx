@@ -61,13 +61,13 @@ const AboutContent = () => {
         </ul>
 
         <p className="mt-10">
-          Picardy NFT Domain's aim is to provide verifiable identity digitally,
+          Picardy NFT Domain aims to provide verifiable identity digitally,
           which can be backed up by data contained in these domains. All these
           are done within the full scope of decentralization in web3
         </p>
       </div>
 
-      <div className="w-[300px] bg-black mt-10" />
+      <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 gray__gradient" />
     </div>
   );
 };

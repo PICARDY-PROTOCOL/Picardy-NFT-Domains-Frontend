@@ -76,6 +76,33 @@
   );
 }
 
+.black-orange-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(41, 41, 41, 1) 0%,
+    rgba(30, 30, 30, 1) 95%,
+    rgba(145, 143, 111, 0.7959558823529411) 100%
+  );
+}
+
+.feature-bal {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 30, 30, 1) 0%,
+    rgba(30, 30, 30, 1) 50%,
+    rgba(14, 14, 14, 1) 100%
+  );
+}
+
+.black-bg-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
 .bg-discount-gradient {
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
@@ -142,7 +169,7 @@
   filter: blur(900px);
 }
 
-.white__gradient {
+.gray__gradient {
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
