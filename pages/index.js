@@ -1,5 +1,5 @@
 import styles from '../helper/style';
-import { Footer, Navbar, Minter, Hero, Description, Faq } from '../components';
+import { Minter, Hero, Description, Faq } from '../components';
 
 import { faqQuestions } from '../constants';
 

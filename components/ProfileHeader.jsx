@@ -10,11 +10,6 @@ const dummyAddress = '0xhh8495mo04nv847360hj50';
 const ProfileHeader = () => {
   return (
     <section className={` bg-black md:flex-row flex-col ${styles.paddingY}`}>
-      <Head>
-        <title>Profile | Picardy</title>
-        <meta name="description" content="Profile Page" />
-      </Head>
-
       <div
         className={`feature-bal rounded-none mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[100px] md:rounded-2xl xl:px-0 sm:px-32 px-6`}
       >

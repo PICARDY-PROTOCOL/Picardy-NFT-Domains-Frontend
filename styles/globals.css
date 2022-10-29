@@ -103,6 +103,15 @@
   );
 }
 
+.bg-dashboardnav-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(154, 150, 56, 1) 0%,
+    rgba(231, 204, 20, 1) 50%,
+    rgba(231, 175, 20, 1) 100%
+  );
+}
+
 .bg-discount-gradient {
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
