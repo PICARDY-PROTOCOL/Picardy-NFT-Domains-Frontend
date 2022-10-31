@@ -28,10 +28,10 @@ const DashboardNav = ({ page }) => {
   return (
     <>
       <nav
-        className="w-full py-6 items-center h-[300px] w-[250px] absolute left-0 top-0 right-0 pt-[40px] navbar md:mt-[500px] mt-0 md:border-r-2 md:border-white"
+        className="hidden  py-6 items-center h-[300px] w-[250px] absolute left-0 top-0 right-0 pt-[40px] navbar md:mt-[500px] mt-0 md:border-r-2 md:border-white md:block"
         aria-label="Sidebar"
       >
-        <ul className="list-none ml-10 pl-16 flex flex-col sm:flex hidden justify-start items-start gap-6 flex-1">
+        <ul className="list-none ml-10 pl-16 flex flex-col sm:flex justify-start items-start gap-6 flex-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
