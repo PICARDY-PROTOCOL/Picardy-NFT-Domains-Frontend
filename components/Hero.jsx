@@ -2,6 +2,7 @@ import styles from '../helper/style';
 import Head from 'next/head';
 import Rectangle from './svg/Rectangle';
 
+
 const Hero = () => {
   return (
     <section id="home" className={`md:flex-row flex-col ${styles.paddingY}`}>
@@ -16,7 +17,7 @@ const Hero = () => {
         className={`flex items-center flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-4`}
       >
         <div className="w-3/4 text-center mt-2">
-          <h1 className="text-center text-gradient font-poppins font-semibold ss:text-[58px] text-[40px] flex-wrap text-white ss:leading-[100.8px] leading-[75px]">
+          <h1 className="text-center text-gradient font-poppins font-semibold ss:text-[58px] text-[40px] flex-wrap text-white ss:leading-[100.8px] leading-[75px] animate-pulse">
             Permissionless NFT Domains
           </h1>
         </div>
@@ -35,7 +36,7 @@ const Hero = () => {
         <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
         {/* gradient end */}
       </div>
-    </section> 
+    </section>
   );
 };
 

@@ -38,8 +38,8 @@ const DashboardNav = ({ page }) => {
               href={item.href}
               className={`font-poppins font-normal cursor-pointer text-[16px] ${
                 active === item.name
-                  ? 'text-white bg-dashboardnav-gradient p-1 px-4 rounded-xl'
-                  : 'text-dimWhite'
+                  ? 'text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl'
+                  : 'text-dimWhite hover:opacity-80'
               } `}
             >
               <span className="truncate">{item.name}</span>

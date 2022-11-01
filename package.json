@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.7.3",
+    "animate.css": "^4.1.1",
     "ethers": "^5.7.2",
+    "framer-motion": "^7.6.2",
     "lodash.merge": "^4.6.2",
     "next": "13.0.0",
     "react": "18.2.0",
+    "react-animation-on-scroll": "^5.1.0",
     "react-dom": "18.2.0",
     "wagmi": "^0.7.7"
   },
