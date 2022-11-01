@@ -32,7 +32,7 @@ const Hero = () => {
           <Rectangle />
         </div>
 
-        <div className="lg:hidden">
+        <div className=" ss:block sm:hidden">
           <SmallRectangle />
         </div>
 
