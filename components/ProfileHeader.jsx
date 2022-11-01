@@ -5,7 +5,7 @@ import styles from '../helper/style';
 import Head from 'next/head';
 
 const dummyBalance = 80;
-const dummyAddress = '0xhh8495mo04nv847360hj50';
+const dummyAddress = '0xhh8495mo0..';
 
 const ProfileHeader = () => {
   return (
@@ -28,7 +28,7 @@ const ProfileHeader = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 justify-between black-orange-gradient w-full p-10 rounded-2xl">
+        <div className="flex gap-8 justify-between black-orange-gradient w-full p-10 rounded-2xl ">
           <div>
             <h1>Address:</h1>
             <p>{dummyAddress}</p>

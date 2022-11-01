@@ -73,14 +73,14 @@ const DomainCard = () => {
         <div
           className={`feature-bal rounded-3xl mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[30px] md:rounded-2xl xl:px-0 sm:px-28 px-1`}
         >
-          <div className="flex gap-10 items-center">
-            <div>
+          <div className="block gap-10 items-center sm:flex">
+            <div className=''>
               <DomainName />
             </div>
 
             <div>
               <div>
-                <h2 className="mb-2 font-bold text-xl">{domain}</h2>
+                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">{domain}</h2>
                 <p className="mb-2">
                   A Domain issued to {communityName} members
                 </p>
