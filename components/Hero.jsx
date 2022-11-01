@@ -1,7 +1,7 @@
 import styles from '../helper/style';
 import Head from 'next/head';
 import Rectangle from './svg/Rectangle';
-
+import SmallRectangle from './svg/SmallRectangle';
 
 const Hero = () => {
   return (
@@ -16,8 +16,8 @@ const Hero = () => {
       <div
         className={`flex items-center flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-4`}
       >
-        <div className="w-3/4 text-center mt-2">
-          <h1 className="text-center text-gradient font-poppins font-semibold ss:text-[58px] text-[40px] flex-wrap text-white ss:leading-[100.8px] leading-[75px] animate-pulse">
+        <div className="w-full text-center mt-2">
+          <h1 className="text-center text-gradient font-poppins font-semibold ss:text-[58px] text-[40px] flex-wrap text-white sm:w-full ss:leading-[100.8px] leading-[75px] animate-pulse">
             Permissionless NFT Domains
           </h1>
         </div>
@@ -27,8 +27,14 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className={`${styles.flexCenter} md:my-0 my-10 relative`}>
-        <Rectangle />
+      <div className={`${styles.flexCenter} md:my-0 my-4 relative`}>
+        <div className="hidden sm:block">
+          <Rectangle />
+        </div>
+
+        <div className="lg:hidden">
+          <SmallRectangle />
+        </div>
 
         {/* gradient start */}
         {/* <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" /> */}

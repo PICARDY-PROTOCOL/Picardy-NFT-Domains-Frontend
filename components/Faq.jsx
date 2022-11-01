@@ -9,9 +9,14 @@ const Faq = ({ question, answer }) => {
 
   return (
     <>
-      <div className="mt-16 mx-auto text-white shadow rounded border border-gray-100 border-t-0 w-3/4">
+      <div className="mt-16 mx-auto text-white shadow rounded border border-gray-100 border-t-0 w-full md:w-3/4">
         <div className="p-4 text-xl relative font-medium">
-          <div className="w-5/6">{question}</div>
+          <div
+            className="w-5/6 cursor-pointer"
+            onClick={() => setExpand(!expand)}
+          >
+            {question}
+          </div>
           <button
             aria-label="question-expand"
             className="text-xl absolute top-0 right-0 p-4 focus:outline-none"

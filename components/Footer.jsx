@@ -22,8 +22,8 @@ const Footer = () => (
       <SiMedium />
     </div>
 
-    <div className="w-full flex justify-center items-center  md:flex-row flex-col pt-6 ">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+    <div className="w-full flex justify-center items-center md:flex-row flex-col pt-6 ">
+      <p className="font-poppins  font-normal text-center text-[18px] leading-[27px] text-white">
         Ⓒ 2022 Picardy NFT Domains. All Rights Reserved.
       </p>
     </div>

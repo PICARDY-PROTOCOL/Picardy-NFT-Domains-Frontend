@@ -11,16 +11,16 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar">
-      <Link href="/">
-        <Image src={logo} alt="picardy" className="w-[124px] h-[32px]" />
+    <nav className="max-w-7xl flex py-6 justify-between px-4 sm:px-10 items-center navbar">
+      <Link href="/" className="ml-5">
+        <Image src={logo} alt="picardy" className=" h-[32px]" />
       </Link>
 
-      <ul className="list-none cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
+      <ul className="list-none ml-12 cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
+            className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-gray-900 ${
               active === nav.title ? 'text-white' : 'text-dimWhite'
             } ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10'}`}
             onClick={() => setActive(nav.title)}

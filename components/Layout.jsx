@@ -7,7 +7,7 @@ import styles from '../helper/style';
 const Layout = ({ children }) => {
   return (
     <div className="bg-black w-full overflow-hidden">
-      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={` `}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
