@@ -27,6 +27,8 @@ const Footer = () => (
         Ⓒ 2022 Picardy NFT Domains. All Rights Reserved.
       </p>
     </div>
+
+    <div className="  blue__gradient" />
   </section>
 );
 

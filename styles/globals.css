@@ -16,6 +16,10 @@
   scroll-behavior: smooth;
 }
 
+div {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .text-gradient {
   background: linear-gradient(
     90deg,

@@ -1,5 +1,7 @@
 import Navbar from './Navbar';
-import Minter from './Minter';
+import HomeMinter from './HomeMinter';
+import CustomMinter from './CustomMinter';
+import Contact from './Contact';
 import Footer from './Footer';
 import Hero from './Hero';
 import Description from './Description';
@@ -9,7 +11,9 @@ import ProfileInfo from './ProfileInfo';
 
 export {
   Navbar,
-  Minter,
+  HomeMinter,
+  CustomMinter,
+  Contact,
   Footer,
   Hero,
   Description,

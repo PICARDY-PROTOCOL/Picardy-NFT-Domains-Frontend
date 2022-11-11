@@ -9,10 +9,10 @@ const Faq = ({ question, answer }) => {
 
   return (
     <>
-      <div className="mt-16 mx-auto text-white shadow rounded border border-gray-100 border-t-0 w-full md:w-3/4">
+      <div className="mt-16 mx-auto text-white shadow rounded border border-gray-100 border-t-0 w-full md:w-3/4 transition-all duration-500">
         <div className="p-4 text-xl relative font-medium">
           <div
-            className="w-5/6 cursor-pointer"
+            className="w-5/6 cursor-pointer transition-all duration-500"
             onClick={() => setExpand(!expand)}
           >
             {question}

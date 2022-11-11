@@ -11,7 +11,6 @@ const Layout = ({ children }) => {
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
-        <div className="absolute z-[1] w-[80%] h-[80%] rounded-full white__gradient bottom-40" />
       </div>
       <main className="flex-1">{children}</main>
       <div className="mt-8" />

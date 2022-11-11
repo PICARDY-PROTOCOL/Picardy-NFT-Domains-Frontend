@@ -11,27 +11,31 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="max-w-7xl flex py-6 justify-between px-4 sm:px-10 items-center navbar">
+    <nav className="max-w-7xl flex py-6 justify-between px-4 sm:px-8 items-center ">
       <Link href="/" className="ml-5">
         <Image src={logo} alt="picardy" className=" h-[32px]" />
       </Link>
 
-      <ul className="list-none ml-12 cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-gray-900 ${
-              active === nav.title ? 'text-white' : 'text-dimWhite'
-            } ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10'}`}
-            onClick={() => setActive(nav.title)}
+      <ul className="list-none font-bold ml-24 cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
+        {navLinks.map((nav) => (
+          <Link
+            key={nav.name}
+            href={nav.href}
+            className={`font-poppins font-normal cursor-pointer text-[16px] mr-10 hover:opacity-80 ${
+              active === nav.name ? 'text-white' : 'text-dimWhite'
+            } `}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
-          </li>
+            <span className="truncate">{nav.name}</span>
+          </Link>
         ))}
       </ul>
 
       <div>
-        <ConnectButton />
+        <ConnectButton
+          showBalance={false}
+          chainStatus="name"
+          accountStatus="address"
+        />
       </div>
 
       {/* <div className="sm:hidden flex flex-1 justify-end items-center">

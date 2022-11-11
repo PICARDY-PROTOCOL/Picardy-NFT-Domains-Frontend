@@ -3,27 +3,20 @@ import Head from 'next/head';
 import Rectangle from './svg/Rectangle';
 import SmallRectangle from './svg/SmallRectangle';
 
-const Hero = () => {
+const Hero = ({ header, description }) => {
   return (
     <section id="home" className={`md:flex-row flex-col ${styles.paddingY}`}>
-      <Head>
-        <title>Home | Picardy</title>
-        <meta
-          name="description"
-          content="Create your online event on the blockchain"
-        />
-      </Head>
       <div
         className={`flex items-center flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-4`}
       >
         <div className="w-full text-center mt-2">
           <h1 className="text-center text-gradient font-poppins font-semibold ss:text-[58px] text-[40px] flex-wrap text-white sm:w-full ss:leading-[100.8px] leading-[75px] animate-pulse">
-            Permissionless NFT Domains
+            {header}
           </h1>
         </div>
 
         <p className={`${styles.paragraph} text-center mb-4 mt-2`}>
-          Mint your identity on the Blockchain
+          {description}
         </p>
       </div>
 

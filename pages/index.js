@@ -1,20 +1,31 @@
 import styles from '../helper/style';
-import { Minter, Hero, Description, Faq } from '../components';
+import Head from 'next/head';
+import { HomeMinter, Hero, Description, Faq } from '../components';
 
 import { faqQuestions } from '../constants';
 
 export default function Home() {
+  const header = 'Permissionless NFT Domains';
+  const description = 'Mint your identity on the Blockchain';
+  
   return (
     <div className=" w-full overflow-hidden">
+      <Head>
+        <title>Home | Picardy</title>
+        <meta
+          name="description"
+          content="Mint your identity on the blockchain"
+        />
+      </Head>
       <div className={`bg--black-gradient-2 ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero />
+          <Hero header={header} description={description} />
         </div>
       </div>
 
       <div className={`bg-black ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <Minter />
+          <HomeMinter />
           <Description />
           <div className="text-white mt-28">
             <h1 className="text-4xl text-center">

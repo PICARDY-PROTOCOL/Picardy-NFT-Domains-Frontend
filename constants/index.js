@@ -1,15 +1,15 @@
 export const navLinks = [
   {
-    id: 'docs',
-    title: 'Docs',
+    name: 'About',
+    href: '/about',
   },
   {
-    id: 'learn',
-    title: 'Learn',
+    name: 'FAQ',
+    href: '/',
   },
   {
-    id: 'faq',
-    title: 'FAQ',
+    name: 'Custom TLD',
+    href: '/custom-tld',
   },
 ];
 
