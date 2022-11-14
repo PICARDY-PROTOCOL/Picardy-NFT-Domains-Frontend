@@ -2,12 +2,40 @@ import React from 'react';
 import ProfileRectangle from './svg/ProfileRectangle';
 import { FaWallet } from 'react-icons/fa';
 import styles from '../helper/style';
-import Head from 'next/head';
+import { useAccount, useBalance } from 'wagmi';
 
 const dummyBalance = 80;
 const dummyAddress = '0xhh8495mo0..';
 
 const ProfileHeader = () => {
+  const { address } = useAccount();
+  const { data } = useBalance({
+    addressOrName: address,
+  });
+
+  const formatAddress = (address) => {
+    let addressFormatted;
+    if (address) {
+      addressFormatted = address.slice(0, -16);
+    } else {
+      addressFormatted = '---';
+    }
+    return addressFormatted;
+  };
+
+  const formatBalance = (balance) => {
+    let balanceFormatted;
+    if (balance) {
+      balanceFormatted = balance.slice(0, -16);
+    } else {
+      balanceFormatted = '---';
+    }
+    return balanceFormatted;
+  };
+
+  // console.log(address);
+  // console.log(data);
+
   return (
     <section className={` bg-black md:flex-row flex-col ${styles.paddingY}`}>
       <div
@@ -20,7 +48,9 @@ const ProfileHeader = () => {
         <div className="flex justify-between  black-orange-gradient w-full p-10 rounded-2xl">
           <div>
             <h1>Balance:</h1>
-            <p>{dummyBalance} ETH</p>
+            <p>
+              {formatBalance(data?.formatted)} {data?.symbol}
+            </p>
           </div>
 
           <div className="bg-gray-400 p-3 rounded-xl">
@@ -31,7 +61,7 @@ const ProfileHeader = () => {
         <div className="flex gap-8 justify-between black-orange-gradient w-full p-10 rounded-2xl ">
           <div>
             <h1>Address:</h1>
-            <p>{dummyAddress}</p>
+            <p>{formatAddress(address)}...</p>
           </div>
 
           <div className="bg-gray-400 p-3 rounded-xl">

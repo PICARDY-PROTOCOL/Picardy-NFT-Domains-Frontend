@@ -1,41 +1,12 @@
-export const navLinks = [
-  {
-    name: 'About',
-    href: '/about',
-  },
-  {
-    name: 'FAQ',
-    href: '/',
-  },
-  {
-    name: 'Custom TLD',
-    href: '/custom-tld',
-  },
-];
+const config = {
+  sbtFactoryAddress: '0x71D60c6E3723a4a9Cc351cC28Cd2C818Bf19e2D2',
+  domainFactoryAddress: '0x311F7f66f35BA7242F1FE5ae0d45eD51145Fa688',
+  sbtResolverAddress: '0xc7b63c3F1212E063C386a2C05A171Db3217A99Ab',
+  domainResolverAddress: '0x557ad8C374aE2663AF6db3d2cD4C42f79FcF0324',
+};
 
-export const faqQuestions = [
-  {
-    id: '1',
-    question: 'What is a PND?',
-    answer:
-      'A PND domain costs as much 20 3RD adjusted overtime to always be near or under $20',
-  },
-  {
-    id: '2',
-    question: 'How much does a PND cost?',
-    answer:
-      'A PND domain costs as much 20 3RD adjusted overtime to always be near or under $20',
-  },
-  {
-    id: '3',
-    question: 'What can I use my domain for?',
-    answer:
-      'You can add custom data to your domain such as your twitter, your profile picture, and other custom links to make it easier for people to connect with you. You can also see your domain on all integrated sites.',
-  },
-  {
-    id: '4',
-    question: 'How do I integrate my PND?',
-    answer:
-      'We have an integration guide on our docs page for just the domain and the custom data. Please head over to the docs page for in-depth instructions.',
-  },
-];
+const tlds = {};
+
+const sbtTlds = {};
+
+module.exports = { config, tlds, sbtTlds };

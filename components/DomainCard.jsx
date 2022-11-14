@@ -1,12 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DomainName from './svg/DomainName';
+import { config } from '../constants';
 import styles from '../helper/style';
+import domainResolverAbi from '../constants/domainResolver.json';
+import { useAccount } from 'wagmi';
+import { ethers } from 'ethers';
+import Image from 'next/image';
 
 const domain = 'esse.3rd';
-const communityName = '.3rd';
+// const communityName = '.3rd';
+const tld = '.blokness';
 
 const DomainCard = () => {
+  const { address } = useAccount();
+  const [domainName, setDomainName] = useState('');
+  const [communityName, setCommunityName] = useState('');
   const [isEditing, setEditing] = useState(false);
+  const [domainImage, setDomainImage] = useState();
+
+  const getProfileDetails = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    console.log(provider, signer);
+
+    const domainResolver = new ethers.Contract(
+      config.domainResolverAddress,
+      domainResolverAbi,
+      signer
+    );
+
+    const defaultDomain = await domainResolver.getDefaultDomain(address, tld);
+    // console.log(defaultDomain);
+
+    const domainUri = await domainResolver.getDomainTokenUri(
+      defaultDomain,
+      tld
+    );
+    const formatImage = window.atob(domainUri.substring(29));
+    // console.log(formatImage);
+    const result = JSON.parse(formatImage);
+    console.log(result);
+    setDomainName(result.name);
+    setDomainImage(result.image);
+
+    const extend = result.name;
+    const extendFormat = extend.split('.')[1];
+    setCommunityName(extendFormat);
+
+    const domainData = await domainResolver.getDomainData(defaultDomain, tld);
+    console.log(domainData);
+  };
+
+  useEffect(() => {
+    getProfileDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const editingDomainData = (
     <>
@@ -74,15 +122,16 @@ const DomainCard = () => {
           className={`feature-bal rounded-3xl mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[30px] md:rounded-2xl xl:px-0 sm:px-28 px-1`}
         >
           <div className="block gap-10 items-center sm:flex">
-            <div className=''>
-              <DomainName />
-            </div>
+            <Image src={domainImage} alt="" width="103" height="103" />
 
             <div>
               <div>
-                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">{domain}</h2>
+                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">
+                  {domainName}
+                </h2>
                 <p className="mb-2">
-                  A Domain issued to {communityName} members
+                  A Domain issued to{' '}
+                  <span className="italic">.{communityName}</span> members
                 </p>
               </div>
 

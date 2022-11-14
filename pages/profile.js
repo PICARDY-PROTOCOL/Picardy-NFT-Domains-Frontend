@@ -1,7 +1,22 @@
 import React from 'react';
-import ProfileHeader from '../components/ProfileHeader';
 import ProfileInfo from '../components/ProfileInfo';
-import DomainCard from '../components/DomainCard';
+// import DomainCard from '../components/DomainCard';
+
+import dynamic from 'next/dynamic';
+
+const DomainCard = dynamic(
+  () => {
+    return import('../components/DomainCard');
+  },
+  { ssr: false }
+);
+const ProfileHeader = dynamic(
+  () => {
+    return import('../components/ProfileHeader');
+  },
+  { ssr: false }
+);
+const tld = '.blokness';
 
 const Profile = () => {
   return (

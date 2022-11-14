@@ -28,7 +28,6 @@ const Footer = () => (
       </p>
     </div>
 
-    <div className="  blue__gradient" />
   </section>
 );
 

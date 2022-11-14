@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { logo } from '../public/assets';
-import { navLinks } from '../constants';
+import { navLinks } from '../helper';
 import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
@@ -11,12 +11,18 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="max-w-7xl flex py-6 justify-between px-4 sm:px-8 items-center ">
-      <Link href="/" className="ml-5">
-        <Image src={logo} alt="picardy" className=" h-[32px]" />
+    <nav className="max-w-7xl flex py-6 justify-between px-4 sm:px-10 items-center ">
+      <Link href="/" className="ml-5" passHref>
+        <a>
+          <Image
+            src={logo}
+            alt="picardy"
+            className=" h-[32px] cursor-pointer"
+          />
+        </a>
       </Link>
 
-      <ul className="list-none font-bold ml-24 cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
+      <ul className="list-none ml-12 gap-14 text-white cursor-pointer sm:flex hidden justify-center items-center flex-1 ">
         {navLinks.map((nav) => (
           <Link
             key={nav.name}

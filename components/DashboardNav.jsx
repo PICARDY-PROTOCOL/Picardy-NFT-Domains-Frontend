@@ -72,7 +72,7 @@ const DashboardNav = ({ page }) => {
                 href={item.href}
                 className={`font-poppins font-normal cursor-pointer mb-6 text-[16px] ${
                   active === item.name
-                    ? 'text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl'
+                    ? 'text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl cursor-pointer'
                     : 'text-dimWhite hover:opacity-80'
                 } `}
               >
