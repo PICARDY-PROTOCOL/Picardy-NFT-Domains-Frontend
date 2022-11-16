@@ -8,7 +8,7 @@ import DomainCard from './DomainCard';
 const tld = '.blokness';
 
 const Domains = () => {
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const [response, setResponse] = useState({});
 
   const getProfileDetails = async () => {
@@ -22,6 +22,7 @@ const Domains = () => {
     );
 
     const defaultDomain = await domainResolver.getDefaultDomain(address, tld);
+    console.log(defaultDomain);
 
     const domainUri = await domainResolver.getDomainTokenUri(
       defaultDomain,
@@ -32,6 +33,9 @@ const Domains = () => {
     const result = JSON.parse(formatImage);
     setResponse(result);
     console.log(result);
+
+    const defaultDomains = await domainResolver.getDefaultDomains(address);
+    console.log(defaultDomains);
 
     const domainData = await domainResolver.getDomainData(defaultDomain, tld);
   };
