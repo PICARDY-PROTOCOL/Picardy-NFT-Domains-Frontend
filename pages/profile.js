@@ -41,7 +41,7 @@ const Profile = () => {
           </div>
         </div>
       )}
-      {!isConnected && (
+      {/* {!isConnected && (
         <div
           className={`h-full md:flex-row flex-col ${styles.paddingY} items-center text-center w-full px-[400px]`}
         >
@@ -56,7 +56,7 @@ const Profile = () => {
             </span>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

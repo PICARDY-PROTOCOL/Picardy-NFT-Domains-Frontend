@@ -1,7 +1,7 @@
 import styles from '../helper/style';
 import Head from 'next/head';
 import { HomeMinter, Hero, Description, Faq } from '../components';
-
+import SbtMinter from '../components/SbtMinter';
 import { faqQuestions } from '../helper';
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
 
       <div className={`bg-black ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <HomeMinter />
+          <SbtMinter />
           <Description />
           <div className="text-white mt-28">
             <h1 className="text-4xl text-center">

@@ -1,84 +1,64 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
-import picardyDomainFactoryAbi from '../constants/picardyDomainFactoryAbi.json';
-import picardyDomainAbi from '../constants/picardyDomainAbi.json';
-import { ethers } from 'ethers';
+import sbtDomainAbi from '../constants/sbtDomainAbi.json';
+import sbtDomainFactoryAbi from '../constants/sbtFactoryAbi.json';
 import { config } from '../constants';
+import { ethers } from 'ethers';
 
-// const tldss = ['blokness', '.3rd'];
-// const tld = '.blokness';
-
-const HomeMinter = () => {
+const SbtMinter = () => {
   const { address } = useAccount();
   const [userDomain, setUserDomain] = useState('');
-  const [selectTld, setSelectTld] = useState('.blokness');
-  const [domainFactory, setDomainFactory] = useState('');
-  const [tlds, setTlds] = useState();
+  const [selectTld, setSelectTld] = useState('');
+  const [sbtFactory, setSbtFactory] = useState('');
+  const [sbtTlds, setSbtTlds] = useState([]);
 
-  const getTldDomains = async () => {
+  const getSbtTldDomains = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const newDomainFactory = new ethers.Contract(
-      config.domainFactoryAddress,
-      picardyDomainFactoryAbi,
+    const newSbtFactory = new ethers.Contract(
+      config.sbtFactoryAddress,
+      sbtDomainFactoryAbi,
       signer
     );
-    setDomainFactory(newDomainFactory);
+    setSbtFactory(newSbtFactory);
 
-    const tldAddresses = await newDomainFactory.getTldsArray().then((res) => {
-      setTlds(res);
+    const sbtAddresses = await newSbtFactory.getTldsArray().then((res) => {
+      setSbtTlds(res);
       console.log(res);
     });
   };
+
+  useEffect(() => {
+    getSbtTldDomains();
+  }, []);
 
   const handleChange = (event) => {
     setSelectTld(event.target.value);
   };
 
-  useEffect(() => {
-    getTldDomains();
-  }, []);
-
-  // console.log(tlds);
-
-  const mintDomain = async (e) => {
+  const mintSbtDomain = async (e) => {
     e.preventDefault();
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
     const formattedName = userDomain.replace(/\s+/g, '').toLowerCase().trim();
-    const tldAddress = await domainFactory.tldNamesAddresses(selectTld);
+    const sbtTldAddress = await sbtFactory.tldNamesAddresses(selectTld);
 
-    console.log(formattedName, tldAddress);
+    console.log(formattedName, sbtTldAddress);
 
-    const domainContract = new ethers.Contract(
-      tldAddress,
-      picardyDomainAbi,
+    const sbtDomainContract = new ethers.Contract(
+      sbtTldAddress,
+      sbtDomainAbi,
       signer
     );
 
-    const mint = await domainContract.mint(formattedName, address);
+    const mint = await sbtDomainContract.mint(formattedName, address);
     const receipt = await mint.wait();
     console.log(receipt);
-    const txHash = await receipt.transactionHash;
-    console.log(txHash);
-
-    // const userInput = userDomain.concat(selectTld);
-    // const formatInput = userInput.replace(/\s+/g, '').toLowerCase().trim();
-
-    // const userName =
-  };
-
-  const submitDomain = (e) => {
-    e.preventDefault();
-
-    const combine = userDomain.concat(selectTld);
-    const formatInput = combine.replace(/\s+/g, '').toLowerCase().trim();
-
-    console.log(formatInput);
-    setUserDomain('');
+    const txnHash = await receipt.transactionHash;
+    console.log('Minted:', txnHash);
   };
 
   return (
@@ -99,18 +79,13 @@ const HomeMinter = () => {
               className="focus:outline-none h-[42px]  rounded-r-2xl bg-yellow-600 font-bold"
               onChange={handleChange}
             >
-              {tlds
-                ? tlds.map((option, index) => (
+              {sbtTlds
+                ? sbtTlds.map((option, index) => (
                     <option key={index} value={option} className="p-2">
                       {option}
                     </option>
                   ))
                 : '...'}
-              {/* {tlds.map((option, index) => (
-                <option key={index} value={option} className="p-2">
-                  {option}
-                </option>
-              ))} */}
             </select>
           </div>
         </div>
@@ -121,8 +96,9 @@ const HomeMinter = () => {
 
         <button
           type="submit"
+          //   disabled={isConnected}
           className="text-white font-bold border-2 border-[button-gradient] flex mx-auto justify-center bg-black hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-black dark:hover:bg-black dark:focus:ring-black"
-          onClick={mintDomain}
+          onClick={mintSbtDomain}
         >
           Buy Domain
         </button>
@@ -131,4 +107,4 @@ const HomeMinter = () => {
   );
 };
 
-export default HomeMinter;
+export default SbtMinter;

@@ -8,6 +8,7 @@ import Description from './Description';
 import Faq from './Faq';
 import ProfileHeader from './ProfileHeader';
 import ProfileInfo from './ProfileInfo';
+import SbtMinter from './SbtMinter';
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   Faq,
   ProfileHeader,
   ProfileInfo,
+  SbtMinter,
 };
