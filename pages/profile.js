@@ -4,9 +4,9 @@ import ProfileInfo from '../components/ProfileInfo';
 
 import dynamic from 'next/dynamic';
 
-const DomainCard = dynamic(
+const Domains = dynamic(
   () => {
-    return import('../components/DomainCard');
+    return import('../components/Domains');
   },
   { ssr: false }
 );
@@ -29,8 +29,8 @@ const Profile = () => {
         <div className="flex flex-col ">
           {/* <h3 className=" text-2xl md:ml-[280px]">Domains</h3> */}
 
-          <DomainCard />
-          <DomainCard />
+          <Domains />
+          {/* <DomainCard /> */}
         </div>
       </div>
     </div>
