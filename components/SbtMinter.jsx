@@ -5,10 +5,13 @@ import sbtDomainFactoryAbi from '../constants/sbtFactoryAbi.json';
 import { config } from '../constants';
 import { ethers } from 'ethers';
 
+// const tld = '.picardy';
+const tldss = ['.picardy', '.3rd'];
+
 const SbtMinter = () => {
   const { address } = useAccount();
   const [userDomain, setUserDomain] = useState('');
-  const [selectTld, setSelectTld] = useState('');
+  const [selectTld, setSelectTld] = useState('.picardy');
   const [sbtFactory, setSbtFactory] = useState('');
   const [sbtTlds, setSbtTlds] = useState([]);
 
@@ -29,12 +32,15 @@ const SbtMinter = () => {
     });
   };
 
+  //   console.log(sbtTlds);
+
   useEffect(() => {
     getSbtTldDomains();
   }, []);
 
   const handleChange = (event) => {
     setSelectTld(event.target.value);
+    console.log(event.target.value);
   };
 
   const mintSbtDomain = async (e) => {
@@ -108,3 +114,5 @@ const SbtMinter = () => {
 };
 
 export default SbtMinter;
+
+// Minted: 0xc4ba8cbc29b6a34994f38cabfae61b5eff6cb3e694880ee7bf6f85fd4166a323

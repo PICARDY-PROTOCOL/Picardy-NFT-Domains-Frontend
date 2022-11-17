@@ -3,6 +3,9 @@ import DomainName from './svg/DomainName';
 import styles from '../helper/style';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import Link from 'next/link';
+import 'react-toastify/dist/ReactToastify.css';
 
 const domain = 'esse.3rd';
 // const communityName = '.3rd';
@@ -10,6 +13,10 @@ const domain = 'esse.3rd';
 const DomainCard = ({ response }) => {
   const [isEditing, setEditing] = useState(false);
   const [communityName, setCommunityName] = useState('');
+  const notify = () =>
+    toast(
+      'Congrats: Your proof is httttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt'
+    );
 
   const { name, image } = response;
 
@@ -101,6 +108,22 @@ const DomainCard = ({ response }) => {
                   Edit domain data
                 </button>
                 <button className="hover:opacity-80">Transfer Domain</button>
+              </div>
+              {/* second button */}
+              <div className="mt-4 flex flex-row gap-8 text-stone-400 ">
+                <button
+                  className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-2 py-1 shadow-2xl"
+                  onClick={notify}
+                >
+                  Get Proof
+                </button>
+                <ToastContainer />
+
+                <Link href="/verify-sbt">
+                  <button className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-2 py-1">
+                    Verify Sbt
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

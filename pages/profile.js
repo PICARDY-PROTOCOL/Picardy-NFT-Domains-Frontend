@@ -3,13 +3,14 @@ import ProfileInfo from '../components/ProfileInfo';
 import { useAccount } from 'wagmi';
 import styles from '../helper/style';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useState, useEffect } from 'react';
 // import DomainCard from '../components/DomainCard';
 
 import dynamic from 'next/dynamic';
 
-const Domains = dynamic(
+const SbtDomains = dynamic(
   () => {
-    return import('../components/Domains');
+    return import('../components/SbtDomains');
   },
   { ssr: false }
 );
@@ -22,26 +23,32 @@ const ProfileHeader = dynamic(
 
 const Profile = () => {
   const { isConnected } = useAccount();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  });
 
   return (
-    <>
-      {isConnected && (
-        <div className="w-full h-full mt-12 text-white black-bg-gradient">
-          <ProfileHeader />
+    mounted && (
+      <>
+        {isConnected && (
+          <div className="w-full h-full mt-12 text-white black-bg-gradient">
+            <ProfileHeader />
 
-          <div className="mx-[20px] block items-center mt-20 md:flex md:mx-0 ">
-            <ProfileInfo />
+            <div className="mx-[20px] block items-center mt-20 md:flex md:mx-0 ">
+              <ProfileInfo />
 
-            <div className="flex flex-col ">
-              {/* <h3 className=" text-2xl md:ml-[280px]">Domains</h3> */}
+              <div className="flex flex-col ">
+                {/* <h3 className=" text-2xl md:ml-[280px]">Domains</h3> */}
 
-              <Domains />
-              {/* <DomainCard /> */}
+                <SbtDomains />
+                {/* <DomainCard /> */}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {/* {!isConnected && (
+        )}
+        {/* {!isConnected && (
         <div
           className={`h-full md:flex-row flex-col ${styles.paddingY} items-center text-center w-full px-[400px]`}
         >
@@ -57,7 +64,8 @@ const Profile = () => {
           </div>
         </div>
       )} */}
-    </>
+      </>
+    )
   );
 };
 

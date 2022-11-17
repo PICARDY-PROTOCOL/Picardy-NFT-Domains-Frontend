@@ -9,6 +9,7 @@ import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Layout from '../components/Layout';
+import { DomainContext, DomainContextProvider } from '../context/context';
 import '../styles/globals.css';
 
 const { chains, provider } = configureChains(
@@ -45,9 +46,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={myTheme} coolMode>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <DomainContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </DomainContextProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

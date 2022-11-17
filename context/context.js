@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import sbtResolverAbi from '../constants/sbtResolver.json';
+import { createContext, useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import { ethers } from 'ethers';
 import { config } from '../constants';
-import DomainCard from './DomainCard';
+import sbtResolverAbi from '../constants/sbtResolver.json';
+import Domain from '../components/svg/Domain';
+
+export const DomainContext = createContext();
 
 const tld = '.picardy';
 
-const SbtDomains = () => {
+export const DomainContextProvider = ({ children }) => {
   const { address, isConnected } = useAccount();
-  const [response, setResponse] = useState({});
+  const [mintedName, setMintedName] = useState('');
 
-  const getSbtProfileDetails = async () => {
+  const getSbtNameDetails = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
@@ -25,29 +27,25 @@ const SbtDomains = () => {
       address,
       tld
     );
-    console.log('Yollo', defaultSbtDomain);
+    console.log(defaultSbtDomain);
 
     const sbtDomainUri = await sbtDomainResolver.getDomainTokenUri(
       defaultSbtDomain,
       tld
     );
-    const formatImage = window.atob(sbtDomainUri.substring(29));
-
-    const result = JSON.parse(formatImage);
-    setResponse(result);
-    // console.log(result);
+    setMintedName(defaultSbtDomain);
   };
 
   useEffect(() => {
-    getSbtProfileDetails();
+    getSbtNameDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div>
-      <DomainCard response={response} />
-    </div>
+    <DomainContext.Provider value={{ mintedName }}>
+      {children}
+    </DomainContext.Provider>
   );
 };
 
-export default SbtDomains;
+

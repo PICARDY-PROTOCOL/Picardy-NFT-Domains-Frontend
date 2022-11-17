@@ -4,9 +4,6 @@ import { FaWallet } from 'react-icons/fa';
 import styles from '../helper/style';
 import { useAccount, useBalance } from 'wagmi';
 
-const dummyBalance = 80;
-const dummyAddress = '0xhh8495mo0..';
-
 const ProfileHeader = () => {
   const { address } = useAccount();
   const { data } = useBalance({
