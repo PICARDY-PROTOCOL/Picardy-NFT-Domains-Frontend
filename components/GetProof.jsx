@@ -62,12 +62,6 @@ const GetProof = () => {
         tld
       );
       const confirmRecipt = await confirm.wait();
-      const { 0: randomNumbers, 1: nullifier } = await sbtFactory.randDetails(
-        requestId,
-        domainName,
-        tld
-      );
-      setNullifier(nullifier);
     }
   };
 
