@@ -1,24 +1,77 @@
 import Head from 'next/head';
+import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
 import { ethers } from 'ethers';
 import { config } from '../constants';
 import { useAccount } from 'wagmi';
 import sbtFactoryAbi from '../constants/sbtFactoryAbi.json';
 import sbtDomainAbi from '../constants/sbtDomainAbi.json';
+import VerifiedFalse from '../components/verified/VerifiedFalse';
+import VerifiedTrue from '../components/verified/VerifiedTrue';
 
 // import randomNumberGenAbi from '../constants'
+const tld = '.picardy';
 
 const VerifySbt = () => {
   const { address } = useAccount();
   const [proofInput, setProofInput] = useState('');
-  const [requestId, setRequestId] = useState('');
-  const [nullifier, setNullifier] = useState('');
+  const [sbtFactory, setSbtFactory] = useState('');
+  const [sbtTld, setSbtTlds] = useState('');
+  const [provider, setProvider] = useState('');
+  const [verified, setVerified] = useState('');
 
-  // 
-  // console.log('Yollo', DomainName);
+  const getSbtTldDomains = async () => {
+    const provider = new ethers.providers.JsonRpcProvider(
+      process.env.NEXT_PUBLIC_POLYGON_MUMBAI_ENDPOINT
+    );
+    setProvider(provider);
 
-  const getZkProof = async (e) => {
+    const newSbtFactory = new ethers.Contract(
+      config.sbtFactoryAddress,
+      sbtFactoryAbi,
+      provider
+    );
+    setSbtFactory(newSbtFactory);
+
+    await newSbtFactory.getTldsArray().then((res) => {
+      setSbtTlds(res);
+      console.log(res);
+    });
+  };
+
+  useEffect(() => {
+    getSbtTldDomains();
+  }, []);
+
+  const verifyZkProof = async (event) => {
     e.preventDefault();
+
+    const formattedProofInput = proofInput.replace(/\s+/g, '').trim();
+    const data = JSON.parse(formattedProofInput);
+
+    const sbtAddress = await sbtFactory.tldNamesAddresses(tld);
+    const sbtDomain = new ethers.Contract(sbtAddress, sbtDomainAbi, provider);
+    const checkNullifier = await sbtDomain.nullifierExist(data.nullifier);
+
+    if (checkNullifier) {
+      const response = await axios.post(
+        `https://localhost:8080/zk/verifyProof`,
+        data.proof,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.verified === 1) {
+        setVerified(true);
+      } else {
+        setVerified(false);
+      }
+    } else {
+      setVerified(false);
+    }
   };
 
   return (
@@ -60,8 +113,8 @@ const VerifySbt = () => {
           </form>
         </div>
         <p className="text-white mt-4 text-xl">
-          Verified Status:{' '}
-          <span className="text-green-600 font-bold">True</span>
+          Verified Status:
+          {verified === true ? <VerifiedTrue /> : <VerifiedFalse />}
         </p>
       </section>
     </div>

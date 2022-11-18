@@ -21,6 +21,7 @@ const CustomSbtDomain = () => {
 
     const formattedTldName = tldName.replace(/\s+/g, '').toLowerCase().trim();
     const formattedSymbol = symbol.replace(/\s+/g, '').toUpperCase().trim();
+    const formattedPrice = ethers.utils.parseEther(price, 'wei');
 
     console.log(formattedTldName, formattedSymbol, price, buyingEnabled);
 
@@ -33,8 +34,9 @@ const CustomSbtDomain = () => {
       formattedTldName,
       formattedSymbol,
       address,
-      price,
-      buyingEnabled
+      formattedPrice,
+      buyingEnabled,
+      { gasLimit: 1e6 }
     );
     setSbtAddress(sbtAddress);
     console.log(sbtAddress);
