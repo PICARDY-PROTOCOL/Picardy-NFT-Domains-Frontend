@@ -1,9 +1,9 @@
-import React from 'react';
-import Head from 'next/head';
-import { Hero, CustomMinter, Contact } from '../components';
+import React from "react";
+import Head from "next/head";
+import { Hero, CustomMinter, Contact } from "../components";
 
-const header = 'Customized Top Level Domains';
-const description = 'Customize and select your choice top level domain';
+const header = "Customized Top Level Domains";
+const description = "Customize and select your choice top level domain";
 
 const CustomTLD = () => {
   return (

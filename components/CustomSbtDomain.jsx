@@ -1,16 +1,16 @@
-import Switch from './Switch';
-import { useState } from 'react';
-import { useAccount } from 'wagmi';
-import sbtDomainFactoryAbi from '../constants/sbtFactoryAbi.json';
-import { config } from '../constants';
-import { ethers } from 'ethers';
+import Switch from "./Switch";
+import { useState } from "react";
+import { useAccount } from "wagmi";
+import sbtDomainFactoryAbi from "../constants/sbtFactoryAbi.json";
+import { config } from "../constants";
+import { ethers } from "ethers";
 
 const CustomSbtDomain = () => {
   const { address } = useAccount();
-  const [sbtAddress, setSbtAddress] = useState('');
-  const [tldName, setTldName] = useState('');
-  const [price, setPrice] = useState('');
-  const [symbol, setSymbol] = useState('');
+  const [sbtAddress, setSbtAddress] = useState("");
+  const [tldName, setTldName] = useState("");
+  const [price, setPrice] = useState("");
+  const [symbol, setSymbol] = useState("");
   const [buyingEnabled, setBuyingEnabled] = useState(false);
 
   const createSbtDomain = async (e) => {
@@ -19,8 +19,8 @@ const CustomSbtDomain = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const formattedTldName = tldName.replace(/\s+/g, '').toLowerCase().trim();
-    const formattedSymbol = symbol.replace(/\s+/g, '').toUpperCase().trim();
+    const formattedTldName = tldName.replace(/\s+/g, "").toLowerCase().trim();
+    const formattedSymbol = symbol.replace(/\s+/g, "").toUpperCase().trim();
 
     console.log(formattedTldName, formattedSymbol, price, buyingEnabled);
 
@@ -96,7 +96,7 @@ const CustomSbtDomain = () => {
         </button>
 
         <p className="text-gradient font-bold text-center mt-3">
-          except .eth, .ens, .com, .org, .net, .smol, .punk, .dao, .xyz
+          except .eth, .ens, .com, .org, .net, .smol, .dao, .xyz
         </p>
       </form>
     </section>
