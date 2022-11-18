@@ -54,6 +54,7 @@ const GetProof = () => {
       );
       const requestId = event.args.requestId;
       setRequestId(requestId);
+      console.log(requestId);
     };
 
     // simple calculation to get proof Input: TODO: update zk circuit
@@ -103,6 +104,7 @@ const GetProof = () => {
       const message = response.message;
       const result = { nullifier: nullifier, proof: response.proof };
       setProof(JSON.stringify(result));
+      console.log(proof);
     };
 
     //this checks that the random request Has been fulfilled
@@ -116,7 +118,7 @@ const GetProof = () => {
     <div>
       <button
         className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-3 py-1 shadow-2xl"
-        onClick={handleSubmit}
+        onClick={getZkProof}
       >
         Get Proof
       </button>

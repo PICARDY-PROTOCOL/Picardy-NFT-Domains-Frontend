@@ -35,7 +35,7 @@ const SbtDomains = () => {
 
     const result = JSON.parse(formatImage);
     setResponse(result);
-    // console.log(result);
+    console.log(result);
   };
 
   useEffect(() => {

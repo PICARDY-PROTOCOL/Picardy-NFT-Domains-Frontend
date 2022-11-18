@@ -39,8 +39,8 @@ const CustomSbtDomain = () => {
       { gasLimit: 1e6 }
     );
     setSbtAddress(sbtAddress);
-    console.log(sbtAddress);
   };
+  console.log(sbtAddress);
 
   return (
     <section>
