@@ -15,6 +15,8 @@ const SbtMinter = () => {
   const [sbtFactory, setSbtFactory] = useState('');
   const [sbtTlds, setSbtTlds] = useState([]);
 
+  const soulWallet = address;
+
   const getSbtTldDomains = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -60,7 +62,14 @@ const SbtMinter = () => {
       signer
     );
 
-    const mint = await sbtDomainContract.mint(formattedName, address);
+    const mint = await sbtDomainContract.mint(
+      formattedName,
+      address,
+      soulWallet,
+      {
+        gasLimit: 1e6,
+      }
+    );
     const receipt = await mint.wait();
     console.log(receipt);
     const txnHash = await receipt.transactionHash;

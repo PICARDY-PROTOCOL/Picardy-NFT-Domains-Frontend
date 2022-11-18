@@ -18,7 +18,7 @@ const VerifySbt = () => {
   const [sbtFactory, setSbtFactory] = useState('');
   const [sbtTld, setSbtTlds] = useState('');
   const [provider, setProvider] = useState('');
-  const [verified, setVerified] = useState('');
+  const [verified, setVerified] = useState(false);
 
   const getSbtTldDomains = async () => {
     const provider = new ethers.providers.JsonRpcProvider(
@@ -107,6 +107,7 @@ const VerifySbt = () => {
             <button
               className="text-stone-300 text-xl italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl p-3 px-8 shadow-2xl"
               variant="contained"
+              onClick={verifyZkProof}
             >
               Verify
             </button>
