@@ -112,7 +112,7 @@ const DomainCard = ({ response }) => {
               {/* second button */}
               <div className="mt-4 flex flex-row gap-8 text-stone-400 ">
                 <button
-                  className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-2 py-1 shadow-2xl"
+                  className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-3 py-1 shadow-2xl"
                   onClick={notify}
                 >
                   Get Proof
@@ -120,7 +120,7 @@ const DomainCard = ({ response }) => {
                 <ToastContainer />
 
                 <Link href="/verify-sbt">
-                  <button className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-2 py-1">
+                  <button className="text-stone-300  italic items-center hover:opacity-80 bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-700 rounded-xl px-3 py-1">
                     Verify Sbt
                   </button>
                 </Link>
