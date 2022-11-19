@@ -9,7 +9,6 @@ import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 
 const domain = 'esse.3rd';
-// const communityName = '.3rd';
 
 const DomainCard = ({ response }) => {
   const [isEditing, setEditing] = useState(false);
