@@ -30,17 +30,19 @@ const CustomSbtDomain = () => {
       sbtDomainFactoryAbi,
       signer
     );
+
+    console.log(formattedTldName);
     const { 0: sbtAddress } = await sbtFactory.createTld(
       formattedTldName,
       formattedSymbol,
       address,
       formattedPrice,
       buyingEnabled,
-      { gasLimit: 1e6 }
+      // { gasLimit: 1e6 }
     );
     setSbtAddress(sbtAddress);
   };
-  console.log(sbtAddress);
+  // console.log(sbtAddress);
 
   return (
     <section>
